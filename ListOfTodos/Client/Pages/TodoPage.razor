@@ -1,0 +1,69 @@
+﻿@page "/todo"
+
+<h3>TodoPage</h3>
+
+<h6>
+    Add a new todo:
+</h6>
+
+<div class="input-group mb-3">
+    <input class="form-control form-inline"
+           placeholder="I have to do..."
+           @onkeyup="KeyUpEnterTodo"
+           @bind="todoItem.Name" />
+
+    <div class="input-group-append">
+
+        <button class="btn btn-outline-primary" type="button"
+                @onclick="AddTodo">
+            Add a new todo
+        </button>
+    </div>
+</div>
+
+<TodoComponent TodoItems=@todos> </TodoComponent>
+
+@code {
+
+    private TodoItem todoItem = new TodoItem();
+
+    private void AddTodo()
+    {
+        todos.Add(todoItem);
+        todoItem = new TodoItem();
+    }
+
+    void KeyUpEnterTodo(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            AddTodo();
+        }
+    }
+
+    List<TodoItem> todos = new List<TodoItem>
+{
+        new TodoItem
+        {
+            Name = "My first todo",
+            CreateDate = DateTime.Now,
+            DueDate = DateTime.Now.AddDays(2),
+            IsDone = false
+        },
+        new TodoItem
+        {
+            Name = "My second todo",
+            CreateDate = DateTime.Now,
+            DueDate = DateTime.Now.AddDays(2),
+            IsDone = false
+        },
+        new TodoItem
+        {
+            Name = "My third todo",
+            CreateDate = DateTime.Now,
+            DueDate = DateTime.Now.AddDays(3),
+            IsDone = false
+        },
+
+    };
+}
