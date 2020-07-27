@@ -1,4 +1,5 @@
 ﻿@page "/todo"
+@inherits TodoPageBaseComponent
 
 <h3>TodoPage</h3>
 
@@ -22,48 +23,3 @@
 </div>
 
 <TodoComponent TodoItems=@todos> </TodoComponent>
-
-@code {
-
-    private TodoItem todoItem = new TodoItem();
-
-    private void AddTodo()
-    {
-        todos.Add(todoItem);
-        todoItem = new TodoItem();
-    }
-
-    void KeyUpEnterTodo(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter")
-        {
-            AddTodo();
-        }
-    }
-
-    List<TodoItem> todos = new List<TodoItem>
-{
-        new TodoItem
-        {
-            TaskName = "My first todo",
-            CreateDate = DateTime.Now,
-            DueDate = DateTime.Now.AddDays(2),
-            IsDone = false
-        },
-        new TodoItem
-        {
-            TaskName = "My second todo",
-            CreateDate = DateTime.Now,
-            DueDate = DateTime.Now.AddDays(2),
-            IsDone = false
-        },
-        new TodoItem
-        {
-            TaskName = "My third todo",
-            CreateDate = DateTime.Now,
-            DueDate = DateTime.Now.AddDays(3),
-            IsDone = false
-        },
-
-    };
-}
