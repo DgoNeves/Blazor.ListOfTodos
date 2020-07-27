@@ -6,6 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using OakIdeas.GenericRepository;
+using ListOfTodos.Shared;
+using ListOfTodos.Server.Repos;
 
 namespace ListOfTodos.Server
 {
@@ -25,6 +28,8 @@ namespace ListOfTodos.Server
 
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            services.AddScoped<IGenericRepository<TodoItem>, TodoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
