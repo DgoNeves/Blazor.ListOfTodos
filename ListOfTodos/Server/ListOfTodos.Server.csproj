@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0" />
+    <PackageReference Include="OakIdeas.GenericRepository" Version="0.0.5-alpha" />
   </ItemGroup>
 
   <ItemGroup>
