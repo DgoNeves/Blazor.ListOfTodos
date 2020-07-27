@@ -13,6 +13,6 @@ namespace ListOfTodos.Shared
 
         public DateTime CreateDate { get; set; } = DateTime.UtcNow;
 
-        public DateTime DueDate { get; set; }
+        public DateTime DueDate { get; set; } = DateTime.UtcNow;
     }
 }
