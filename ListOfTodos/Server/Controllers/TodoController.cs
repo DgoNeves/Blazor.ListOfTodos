@@ -10,8 +10,8 @@ using OakIdeas.GenericRepository;
 
 namespace ListOfTodos.Server.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("[controller]")]
     public class TodoController : ControllerBase
     {
         IGenericRepository<TodoItem> TodoRepository;
