@@ -10,7 +10,7 @@
     <input class="form-control form-inline"
            placeholder="I have to do..."
            @onkeyup="KeyUpEnterTodo"
-           @bind="todoItem.Name" />
+           @bind="todoItem.TaskName" />
 
     <div class="input-group-append">
 
@@ -45,21 +45,21 @@
 {
         new TodoItem
         {
-            Name = "My first todo",
+            TaskName = "My first todo",
             CreateDate = DateTime.Now,
             DueDate = DateTime.Now.AddDays(2),
             IsDone = false
         },
         new TodoItem
         {
-            Name = "My second todo",
+            TaskName = "My second todo",
             CreateDate = DateTime.Now,
             DueDate = DateTime.Now.AddDays(2),
             IsDone = false
         },
         new TodoItem
         {
-            Name = "My third todo",
+            TaskName = "My third todo",
             CreateDate = DateTime.Now,
             DueDate = DateTime.Now.AddDays(3),
             IsDone = false
