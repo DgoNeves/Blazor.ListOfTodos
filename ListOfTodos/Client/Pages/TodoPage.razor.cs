@@ -4,52 +4,71 @@ using Microsoft.AspNetCore.Components.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace ListOfTodos.Client.Pages
 {
     public class TodoPageBaseComponent : ComponentBase
     {
-        public TodoItem todoItem = new TodoItem();
+        [Inject]
+        public HttpClient Http { get; set; }
 
-        public void AddTodo()
-        {
-            todos.Add(todoItem);
-            todoItem = new TodoItem();
-        }
-
-        public void KeyUpEnterTodo(KeyboardEventArgs e)
-        {
-            if (e.Key == "Enter")
-            {
-                AddTodo();
-            }
-        }
-
-        public List<TodoItem> todos = new List<TodoItem>
+        public List<TodoItem> TodoItems = new List<TodoItem>
         {
             new TodoItem
             {
-                TaskName = "My first todo",
-                CreateDate = DateTime.Now,
-                DueDate = DateTime.Now.AddDays(2),
-                IsDone = false
+                TaskName = "Loading todos",
             },
             new TodoItem
             {
-                TaskName = "My second todo",
-                CreateDate = DateTime.Now,
-                DueDate = DateTime.Now.AddDays(2),
-                IsDone = false
+                TaskName = "Loading todos",
             },
             new TodoItem
             {
-                TaskName = "My third todo",
-                CreateDate = DateTime.Now,
-                DueDate = DateTime.Now.AddDays(3),
-                IsDone = false
+                TaskName = "Loading todos",
             },
 
         };
+
+        public TodoItem todoItem = new TodoItem();
+
+        protected override async Task OnInitializedAsync()
+        {
+            await RefreshTodos();
+        }
+        
+        public async Task RefreshTodos()
+        {
+            TodoItems = await Http.GetFromJsonAsync<List<TodoItem>>("todo");
+            StateHasChanged();
+        }
+
+        public async Task AddTodo()
+        {
+            await Http.PostAsJsonAsync("todo", todoItem);
+            todoItem = new TodoItem();
+
+            await RefreshTodos();
+
+        }
+
+        public async void UpdateTodo(TodoItem todoItem)
+        {
+            await Http.PutAsJsonAsync("todo", todoItem);
+            await RefreshTodos();
+
+        }
+
+        public async void KeyUpEnterTodo(KeyboardEventArgs e)
+        {
+            if (e.Key == "Enter")
+            {
+                await AddTodo();
+            }
+        }
+
+       
     }
 }

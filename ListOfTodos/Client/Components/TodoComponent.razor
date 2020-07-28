@@ -1,12 +1,18 @@
 ﻿@inherits ListOfTodos.Client.Components.TodoComponentBase
 
-<div class="row list-group">
-    @foreach (var item in @TodoItems)
-    {
-        <div class="col-12 list-group-item">
-            @item.TaskName
-            <span>@item.CreateDate </span>
-            <input class="" type="checkbox" checked="@item.IsDone" />
+
+<div class="input-group col-12">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            <input type="checkbox" @bind="@TodoItem.IsDone" onclick="@UpdateCallback">
         </div>
-    }
+    </div>
+
+    <div class="col-8">
+        <input type="text" class="form-control" @bind="@TodoItem.TaskName" oninput="@UpdateCallback" />
+    </div>
+
+    <div class="input-group-append">
+        <input type="date" @bind="@TodoItem.DueDate" />
+    </div>
 </div>

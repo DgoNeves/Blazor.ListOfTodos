@@ -20,6 +20,15 @@
             Add a new todo
         </button>
     </div>
-</div>
 
-<TodoComponent TodoItems=@todos> </TodoComponent>
+</div>
+   
+@foreach (var item in @TodoItems)
+{
+<div class="row">
+        <CascadingValue Value=@item Name="TodoItem">
+            <TodoComponent UpdateCallback="@(async () => UpdateTodo(item))">
+            </TodoComponent>
+        </CascadingValue>
+</div>
+}
