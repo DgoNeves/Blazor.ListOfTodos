@@ -49,7 +49,7 @@ namespace ListOfTodos.Server.Controllers
         }
 
         // PUT api/<TodoController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ActionResult<TodoItem>> Put([FromBody] TodoItem todoItem)
         {
             var updated = await TodoRepository.Update(todoItem);
