@@ -4,15 +4,15 @@
 <div class="input-group col-12">
     <div class="input-group-prepend">
         <div class="input-group-text">
-            <input type="checkbox" @bind="@TodoItem.IsDone" onclick="@UpdateCallback">
+            <input type="checkbox" @bind="@TodoItem.IsDone" onblur="@UpdateCallback">
         </div>
     </div>
 
     <div class="col-8">
-        <input type="text" class="form-control" @bind="@TodoItem.TaskName" oninput="@UpdateCallback" />
+        <input type="text" class="form-control" @bind="@TodoItem.TaskName" onblur="@UpdateCallback" />
     </div>
 
     <div class="input-group-append">
-        <input type="date" @bind="@TodoItem.DueDate" />
+        <input type="date" @bind="@TodoItem.DueDate" onblur="@UpdateCallback" />
     </div>
 </div>
