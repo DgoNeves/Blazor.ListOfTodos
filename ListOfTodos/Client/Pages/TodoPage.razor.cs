@@ -54,14 +54,14 @@ namespace ListOfTodos.Client.Pages
 
         }
 
-        public async void UpdateTodo(TodoItem todoItem)
+        public async Task UpdateTodo(TodoItem todoItem)
         {
             await Http.PutAsJsonAsync("todo", todoItem);
             await RefreshTodos();
 
         }
 
-        public async void KeyUpEnterTodo(KeyboardEventArgs e)
+        public async Task KeyUpEnterTodo(KeyboardEventArgs e)
         {
             if (e.Key == "Enter")
             {
