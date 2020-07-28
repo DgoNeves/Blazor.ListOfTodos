@@ -25,10 +25,9 @@
    
 @foreach (var item in @TodoItems)
 {
-<div class="row">
-        <CascadingValue Value=@item Name="TodoItem">
-            <TodoComponent UpdateCallback="@(async () => UpdateTodo(item))">
-            </TodoComponent>
-        </CascadingValue>
-</div>
+    <div class="row">
+        <TodoComponent TodoItem="@item"
+                       UpdateCallback="@(async () => await UpdateTodo(item))">
+        </TodoComponent>
+    </div>
 }

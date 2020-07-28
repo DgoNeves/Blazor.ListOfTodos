@@ -1,5 +1,6 @@
 ﻿using ListOfTodos.Shared;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace ListOfTodos.Client.Components
 {
     public class TodoComponentBase : ComponentBase
     {
-        [CascadingParameter(Name = "TodoItem")]
+        [Parameter]
         public TodoItem TodoItem { get; set; }
 
         [Parameter]
@@ -21,6 +22,5 @@ namespace ListOfTodos.Client.Components
         {
             return base.OnInitializedAsync();
         }
-
     }
 }
