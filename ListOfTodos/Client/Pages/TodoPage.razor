@@ -25,9 +25,9 @@
    
 @foreach (var item in @TodoItems)
 {
-    <div class="row">
-        <TodoComponent TodoItem="@item"
-                       UpdateCallback="@(async () => await UpdateTodo(item))">
-        </TodoComponent>
-    </div>
+    <TodoComponent TodoItem="@item"
+                    UpdateCallback="@(async () => await UpdateTodo(item))">
+    </TodoComponent>
 }
+
+ 
